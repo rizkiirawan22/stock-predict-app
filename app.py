@@ -9,29 +9,29 @@ start = '2010-01-01'
 end = '2021-12-31'
 
 
-st.title('Stock Trend Prediction')
+st.title('Prediksi Tren Saham')
 
-user_input = st.text_input('Enter Stock Ticker', 'AAPL')
+user_input = st.text_input('Masukkan Simbl Saham', 'AAPL')
 df = data.DataReader(user_input, 'yahoo', start, end)
 
 #Describing Data
-st.subheader('Data from 2010 - 2021')
+st.subheader('Data dari 2010 - 2021')
 st.write(df.describe())
 
 #Visualizations
-st.subheader('Closing Price vs Time Chart')
+st.subheader('Harga Penutupan vs Grafik Waktu')
 fig = plt.figure(figsize = (12,6))
 plt.plot(df.Close)
 st.pyplot(fig)
 
-st.subheader('Closing Price vs Time Chart with 100MA')
+st.subheader('Harga Penutupan vs Grafik Waktu dengan 100MA')
 ma100 = df.Close.rolling(100).mean()
 fig = plt.figure(figsize = (12,6))
 plt.plot(ma100)
 plt.plot(df.Close)
 st.pyplot(fig)
 
-st.subheader('Closing Price vs Time Chart with 100MA & 200MA')
+st.subheader('Harga Penutupan vs Grafik Waktu dengan 100MA & 200MA')
 ma100 = df.Close.rolling(100).mean()
 ma200 = df.Close.rolling(200).mean()
 fig = plt.figure(figsize = (12,6))
@@ -74,10 +74,10 @@ y_test = y_test * scale_factor
 
 #Final Graph
 
-st.subheader('Predictions vs Original')
+st.subheader('Prediksi vs Asli')
 fig2 = plt.figure(figsize=(12,6))
-plt.plot(y_test, 'b', label = 'Original Price')
-plt.plot(y_predicted, 'r', label = 'Predicted Price')
+plt.plot(y_test, 'b', label = 'Harga Asli')
+plt.plot(y_predicted, 'r', label = 'Harga Prediksi')
 plt.xlabel('Time')
 plt.ylabel('Price')
 plt.legend()
