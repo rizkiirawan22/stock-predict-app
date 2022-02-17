@@ -11,7 +11,7 @@ end = '2021-12-31'
 
 st.title('Prediksi Tren Saham')
 
-user_input = st.text_input('Masukkan Simbl Saham', 'AAPL')
+user_input = st.text_input('Masukkan Simbol Saham', 'AAPL')
 df = data.DataReader(user_input, 'yahoo', start, end)
 
 #Describing Data
